@@ -8,6 +8,11 @@ part 'options.g2.dart';
 /// This generator options, gathered from `build.yaml` file.
 @JsonSerializable(fieldRename: FieldRename.snake, anyMap: true)
 class GeneratorOptions {
+
+  ///true if enable run generate
+  @JsonKey(defaultValue: true)
+  final bool generateEnable;
+
   /// If instances of [GraphQLQuery] should be generated.
   @JsonKey(defaultValue: true)
   final bool generateHelpers;
@@ -30,6 +35,7 @@ class GeneratorOptions {
 
   /// Instantiate generator options.
   GeneratorOptions({
+    this.generateEnable = true,
     this.generateHelpers = true,
     this.scalarMapping = const [],
     this.fragmentsGlob,

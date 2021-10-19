@@ -8,6 +8,7 @@ part of 'options.dart';
 
 GeneratorOptions _$GeneratorOptionsFromJson(Map json) {
   return GeneratorOptions(
+    generateEnable: json['generate_enable'] as bool? ?? true,
     generateHelpers: json['generate_helpers'] as bool? ?? true,
     scalarMapping: (json['scalar_mapping'] as List<dynamic>?)
             ?.map((e) => e == null
@@ -30,6 +31,7 @@ GeneratorOptions _$GeneratorOptionsFromJson(Map json) {
 
 Map<String, dynamic> _$GeneratorOptionsToJson(GeneratorOptions instance) =>
     <String, dynamic>{
+      'generate_enable': instance.generateEnable,
       'generate_helpers': instance.generateHelpers,
       'scalar_mapping': instance.scalarMapping,
       'fragments_glob': instance.fragmentsGlob,

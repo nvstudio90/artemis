@@ -24,8 +24,12 @@ String _addGraphQLExtensionToPathIfNeeded(String path) {
 }
 
 List<String> _builderOptionsToExpectedOutputs(BuilderOptions builderOptions) {
+  final ops = GeneratorOptions.fromJson(builderOptions.config);
+  if(!ops.generateEnable) {
+    return [];
+  }
   final schemaMapping =
-      GeneratorOptions.fromJson(builderOptions.config).schemaMapping;
+      ops.schemaMapping;
 
   if (schemaMapping.isEmpty) {
     throw MissingBuildConfigurationException('schema_mapping');
